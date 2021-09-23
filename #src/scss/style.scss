@@ -61,7 +61,7 @@ body {
 
 // <основна сітка>=================================================================================
 ._container {
-    min-width: $maxWidthContainer + px;
+    max-width: $maxWidthContainer + px;
     padding: 0 15px;
     margin: 0 auto;
     // @media (max-width: $md1+px){

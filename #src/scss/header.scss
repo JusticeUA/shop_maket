@@ -205,19 +205,42 @@ $header_logo_line: 120%; //29/24*100
 }
 .search-form {
     max-width: 473px;
-
+    &._active{
+        .search-form__item {
+            opacity: 1;
+            top: 100%;
+            visibility: visible;
+        }
+        .search-form__icon {
+            color: $orangeColor;
+        }
+    }
     // .search-form__icon
 
     &__icon {
-        display: none;
+        position: relative;
+        z-index: 5;
+        font-size: 22px;
+        color: #262F56;
     }
 
     // .search-form__item
 
     &__item {
         background-color: #fff;
-    display: flex;
-    align-items: center;
+        display: flex;
+        align-items: center;
+        @media (max-width: $md2 + px) {
+            box-shadow: 0 0 5px rgba(212, 209, 205, 0.3);
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: -100%;
+            z-index: 5;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3 ease 0;
+        }
     }
 
     // .search-form__btn
