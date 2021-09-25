@@ -128,6 +128,7 @@ a {
           align-items: center;
   padding: 5px 0;
   min-height: 125px;
+  position: relative;
 }
 
 .header__main {
@@ -147,6 +148,8 @@ a {
   font-weight: 700;
   font-size: 24px;
   line-height: 120%;
+  position: relative;
+  z-index: 5;
 }
 
 .header__search {
@@ -313,6 +316,10 @@ a {
   background-color: #E89F71;
   color: #fff;
   font-size: 12px;
+}
+
+.icon-menu {
+  display: none;
 }
 
 /*
@@ -528,6 +535,7 @@ body {
     pointer-events: none;
     position: absolute;
     top: 100%;
+    z-index: 5;
   }
 }
 
@@ -536,6 +544,10 @@ body {
     -webkit-box-flex: 1;
         -ms-flex: 1 1 auto;
             flex: 1 1 auto;
+  }
+
+  .search-form__icon {
+    display: none;
   }
 }
 
@@ -558,6 +570,16 @@ body {
 }
 
 @media (max-width: 991.98px) {
+  .header__body {
+    min-height: 80px;
+  }
+
+  .header__main {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+  }
+
   .search-form__item {
     -webkit-box-shadow: 0 0 5px rgba(212, 209, 205, 0.3);
             box-shadow: 0 0 5px rgba(212, 209, 205, 0.3);
@@ -571,6 +593,142 @@ body {
     -webkit-transition: all 0.3 ease 0;
     -o-transition: all 0.3 ease 0;
     transition: all 0.3 ease 0;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .header__body {
+    min-height: 50px;
+  }
+
+  .menu__body {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    top: 0;
+    left: -100%;
+    background-color: #fcf8f3;
+    -webkit-transition: left 0.3s ease 0s;
+    -o-transition: left 0.3s ease 0s;
+    transition: left 0.3s ease 0s;
+    padding: 70px 15px 30px 15px;
+  }
+
+  .menu__body::before {
+    content: "";
+    position: fixed;
+    width: 100%;
+    height: 50px;
+    top: 0;
+    left: -100%;
+    background-color: #fcf8f3;
+    -webkit-transition: left 0.3s ease 0s;
+    -o-transition: left 0.3s ease 0s;
+    transition: left 0.3s ease 0s;
+    z-index: 2;
+  }
+
+  .menu__body._active {
+    left: 0;
+  }
+
+  .menu__body._active::before {
+    left: 0;
+  }
+
+  .menu__item {
+    margin: 0px 0px 15px 0px;
+  }
+
+  .menu__item:last-child {
+    margin-bottom: 0;
+  }
+
+  .menu__link {
+    font-size: 24px;
+    font-weight: 600;
+  }
+
+  .menu__arrow {
+    font-size: 14px;
+  }
+
+  .menu__arrow._active {
+    -webkit-transform: rotate(-180deg);
+        -ms-transform: rotate(-180deg);
+            transform: rotate(-180deg);
+  }
+
+  .menu__sub-list {
+    margin: 10px -15px 0px -15px;
+  }
+
+  .menu__sub-item:not(:last-child) {
+    margin: 0 0 10 0;
+  }
+
+  .menu__sub-link {
+    font-size: 18px;
+  }
+
+  .icon-menu {
+    margin-left: 32px;
+    display: block;
+    position: relative;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 30px;
+            flex: 0 0 30px;
+    height: 18px;
+    cursor: pointer;
+    z-index: 5;
+  }
+
+  .icon-menu span {
+    -webkit-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+    top: calc(50% - 1px);
+    left: 0px;
+    position: absolute;
+    width: 100px;
+    height: 2px;
+    background-color: #000;
+  }
+
+  .icon-menu span:first-child {
+    top: 0px;
+  }
+
+  .icon-menu span:last-child {
+    top: auto;
+    bottom: 0px;
+  }
+
+  .icon-menu._active span {
+    -webkit-transform: scale(0);
+        -ms-transform: scale(0);
+            transform: scale(0);
+  }
+
+  .icon-menu._active span:first-child {
+    -webkit-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+    top: calc(50% - 1px);
+  }
+
+  .icon-menu._active span:last-child {
+    -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+    bottom: calc(50% - 1px);
+  }
+}
+
+@media (max-width: 767.98px) and (max-width: 1270px) {
+  .icon-menu {
+    margin-left: calc(15px + 17 * ((100vw - 320px) / 950));
   }
 }
 
@@ -593,6 +751,10 @@ body {
   .menu__item:hover .menu__arrow,
   .menu__item:hover .menu__link {
     color: #E89F71;
+  }
+
+  .menu__sub-link:hover {
+    text-decoration: underline;
   }
 
   .actions-header__item_favorites:hover {
