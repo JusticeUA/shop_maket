@@ -1,6 +1,6 @@
 @import "_variables";
 
-@mixin adaptive-value($property, $startSize, $minSize, $type) {
+@mixin adaptiv-value($property, $startSize, $minSize, $type) {
     $addSize: $startSize - $minSize;
     @if $type==1 {
         //Тіки коли менше контейнера
